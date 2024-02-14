@@ -1,0 +1,44 @@
+[
+    {
+        "questionType": "TOPIC 1: JAVA SYNTAX",
+        "questionName": "Create a simple program in java program that will display “hello world”",
+        "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello World\");\n    }\n}",
+        "answer": "Hello World"
+    },
+    {
+        "questionType": "TOPIC 2: DATA TYPES",
+        "questionName": "Write a Java Program to convert temperature from Fahrenheit to Celsius degrees.",
+        "code": "import java.util.Scanner;\npublic class Exercise1 {\n    public static void main(String[] Strings) {\n        Scanner input = new Scanner(System.in);\n        System.out.print(\"Input a degree in Fahrenheit: \");\n        double fahrenheit = input.nextDouble();\n        double celsius = ((5 * (fahrenheit - 32.0)) / 9.0);\n        System.out.println(fahrenheit + \" degree Fahrenheit is equal to \" + celsius + \" in Celsius\");\n    }\n}",
+        "answer": "Input a degree in Fahrenheit: 212, 212.0 degree Fahrenheit is equal to 100.0 in Celsius"
+    },
+    {
+        "questionType": "TOPIC 3: CONSTANT",
+        "questionName": "Write a Java Program to declare constant as private.",
+        "code": "import java.util.Scanner;\npublic class ConstantExample1 {\n    private static final double PRICE=234.90;\n    public static void main(String[] args) {\n        int unit;\n        double total_bill;\n        System.out.print(\"Enter the number of units you have used: \");\n        Scanner sc=new Scanner(System.in);\n        unit=sc.nextInt();\n        total_bill=PRICE*unit;\n        System.out.println(\"The total amount you have to deposit is: \"+total_bill);\n    }\n}",
+        "answer": "Enter the number of units you have used: 10 The total amount you have to deposit is: 2349.0"
+    },
+    {
+        "questionType": "TOPIC 4: THE CHARACTER TYPE",
+        "questionName": "Write a program to replace a specified character with another character",
+        "code": "public class Main {\n    public static void main(String[] args) {\n        // Input string\n        String inputString = \"Hello World\";\n        \n        // Replace 'o' with 'x'\n        String replacedString = inputString.replace('o', 'x');\n        \n        // Print the replaced string\n        System.out.println(replacedString);\n    }\n}",
+        "answer": "Hellx Wxrld"
+    },
+    {
+        "questionType": "TOPIC 5: INTRODUCTION TO STRING",
+        "questionName": "Write a Java program to test if a given string contains the specified sequence of char values.",
+        "code": "public class Main {\n    public static void main(String[] args) {\n        // Input string\n        String inputString = \"Hello World\";\n        \n        // Check if the input string contains \"World\"\n        boolean containsWorld = inputString.contains(\"World\");\n        \n        // Print the result\n        System.out.println(containsWorld);\n    }\n}",
+        "answer": "true"
+    },
+    {
+        "questionType": "TOPIC 6: ESCAPE SEQUENCE",
+        "questionName": "Create a program where we will print the quoted message using escape sequence.",
+        "code": "public class Main {\n    public static void main(String[] args) {\n        // Print the quoted message using escape sequence\n        System.out.println(\"\\\"Hello World\\\"\");\n    }\n}",
+        "answer": "\"Hello World\""
+    },
+    {
+        "questionType": "TOPIC 7: STRING CONCATENATION",
+        "questionName": "Create a simple program in java program that will display “hello world”",
+        "code": "public class Main {\n    public static void main(String[] args) {\n        // Print \"Hello World\"\n        System.out.println(\"Hello World\");\n    }\n}",
+        "answer": "Hello World"
+    }
+]
