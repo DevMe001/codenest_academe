@@ -14,7 +14,7 @@ export default function Activity8() {
       byte byte_val = 0;
        byte_val = input.nextByte();
 
-      System.out.print("Enter the Byte Value : " +byte_val );
+      System.out.print("Enter the Byte Value : " + byte_val );
  
    
       //Convert byte to string
@@ -22,9 +22,7 @@ export default function Activity8() {
       System.out.println("String value : " + str);
     }
 }
-    
-    
-  `;
+ `;
   
    const codeAnswer = `"Enter the Byte Value : 23 String value : 23`;
   

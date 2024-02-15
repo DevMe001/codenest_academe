@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import useExerciseCompiler from '../utilities/useExerciseCompiler';
 import {
   Accordion,
@@ -72,6 +72,22 @@ const Exercise = ({heading,question,audio1,codeOutput,codeAnswer,audio2,newInput
     }
 
 
+    const [attempt,setAttempt] = useState(0);
+
+
+    useEffect(() => {
+      // Retrieve the initial counter value from IndexedDB
+      localforage.getItem("attempt", function(err, value) {
+        if (!err && value) {
+          const storedCounter = JSON.parse(value).attempt;
+          setAttempt(storedCounter);
+        }
+      });
+ 
+    }, [attempt]);
+
+  
+
   return (
     <Box sx={{maxHeight:'80vh'}} className="topic-container">
 
@@ -91,7 +107,7 @@ const Exercise = ({heading,question,audio1,codeOutput,codeAnswer,audio2,newInput
 }
 }`} />
       {!isEmpty(displayAnswer) && <Box sx={{color:valid == 'error' ? '#f10000' : ''}}>{displayAnswer}{valid == 'correct' ? <Typography sx={{color:valid == 'error' ? '#ff3333' : '#198754'}} component={'span'}>(Correct)</Typography> : valid == 'incorrect' ? <Typography sx={{color:valid == 'valid' ? '#198754' : '#ff3333',fontWeight:500}} component={'span'}>(Incorrect)</Typography> : ''}</Box>}
-      {typing && counter <= 3 && <Box sx={{ display: 'flex', flex: 1, justifyContent: 'end' }}>
+      {typing && attempt <= 3 && <Box sx={{ display: 'flex', flex: 1, justifyContent: 'end' }}>
         <Button onClick={onRunCompiler} sx={{ background: '#1e7b75', color: '#ffffff', '&:hover': { background: '#1e7b75', color: '#ffffff' } }} variant={'primary'}>Run</Button>
       </Box>
       }

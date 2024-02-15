@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import axios from 'axios'
 import localforage from "localforage";
 import { isEmpty, isNull, isUndefined} from 'lodash';
+import { useNavigate } from 'react-router-dom';
 
 const useExerciseCompiler = (api) => {
 
@@ -15,7 +16,7 @@ const useExerciseCompiler = (api) => {
     const [counter, setCounter] = useState(0);
     const [questionNumber, setQuestionNUmber] = useState(0);
     const [defaultInputValue, setDefaultInputValue] = useState(0);
-
+    const navigate = useNavigate();
   
   
     useEffect(() => {
@@ -29,10 +30,31 @@ const useExerciseCompiler = (api) => {
  
     }, []);
   
-    const onTyping = (e) => {
+    const onTyping = async(e) => {
       if (!isEmpty(e.target.value)) {
-        setTyping(true)
-        setAnswer(e.target.value);
+
+       
+        const isCorrect = await IndexedDB.getItem('attempt');
+
+        if(!isNull(isCorrect)){
+
+          const isGet = JSON.parse(isCorrect) ?? 0;
+         if(isGet.attempt > 3){
+          setTyping(false)
+          setDisplayAnswer(`You already submitted you answer, click next for another exercises`);
+          setValid('error');
+         }else{
+   
+          setTyping(true)
+         }
+         setAnswer(e.target.value);
+        }
+        else{
+          setTyping(true)
+          setAnswer(e.target.value);
+        }
+       
+      
       } else {
         setTyping(false)
       }
@@ -73,7 +95,8 @@ const useExerciseCompiler = (api) => {
           setValid('correct');
           setTyping(false);
 
-
+          IndexedDB.setItem("attempt", JSON.stringify({ attempt: 4 }));
+          
           storeAnswer(questionNo,true,questionAnswer)
             
          
@@ -81,7 +104,7 @@ const useExerciseCompiler = (api) => {
         else{
     
             setDisplayAnswer(`${questionAnswer}`);
-                setValid('incorrect');
+            setValid('incorrect');
       
                 // Increment the counter
                 setCounter(prevCounter => {
@@ -91,7 +114,7 @@ const useExerciseCompiler = (api) => {
                     IndexedDB.setItem("attempt", JSON.stringify({ attempt: newCounter }));
                   } else {
                     setTyping(false);
-                    setDisplayAnswer(`Maximun attempt exceed`);
+                    setDisplayAnswer(`Maximun attempt exceed,click next for another exercises`);
                     setValid('error');
                     
                     storeAnswer(questionNo,false,questionAnswer)
@@ -100,6 +123,7 @@ const useExerciseCompiler = (api) => {
                 });
        
         }
+        setAnswer('');
     }
   
 
@@ -120,7 +144,7 @@ const useExerciseCompiler = (api) => {
           
 
   
-          console.log(answer);
+          console.log(answer,'get answer');
   
           if(answer != 'error'){
 

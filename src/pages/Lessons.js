@@ -49,13 +49,11 @@ import Activity9 from '../activities/Activity9/Activity9';
 import Activity10 from '../activities/Activity10/Activity10';
 import Scorebaard from '../activities/Scoreboard/Scoreboard';
 import localforage from 'localforage';
-import {  isUndefined } from 'lodash';
+import {  isNull, isUndefined } from 'lodash';
 
 const colorPrimary = '#1e7b75';
 const colorPrimaryShade = '#26918a';
 
-
-const checking = localforage.getItem('exercise').then(item => JSON.parse(item)).length;
 
 
 
@@ -222,7 +220,7 @@ const navigationList = [
     type: 1,
     topic: 11,
     title: 'Score',
-    element:!isUndefined(checking) ?  <Scorebaard /> : <Navigate to={'/lessons?progress=22'}   /> ,
+    element: <Scorebaard /> ,
     description:
       'Write Java program to Convert a short integer into a string.',
   },
@@ -270,6 +268,20 @@ export default function Lessons() {
 
 
   const IndexedDB = localforage;
+
+
+  useEffect(()=>{
+
+    IndexedDB.getItem('exercise').then(item =>{
+        if(isNull(item) && progress == 21){
+          navigate(`?progress=22`);
+        }
+    });
+  
+  
+  },[IndexedDB]);
+  
+
 
   const onQuizes = ()=>{
     navigate('/quizes');
