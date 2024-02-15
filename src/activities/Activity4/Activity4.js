@@ -1,5 +1,5 @@
 import Exercise from '../../activity-wrapper/exercises.component';
-
+import audio2 from '../audios/audio-output.mp3';
 
 export default function Activity4() {
  
@@ -16,7 +16,7 @@ export default function Activity4() {
 
         // Display the original and modified strings for comparison.
         System.out.println("Original string: " + str);
-        System.out.println(" New String: " + new_str);
+        System.out.println("New String: " + new_str);
     }
 }
   `;
@@ -27,7 +27,7 @@ New String: The quick brown fox jumps over the lazy fog.`;
    const question = ` Write a program to replace a specified character with another character.`;
   
   return (
-    <Exercise heading={'TOPIC 4: THE CHARACTER TYPE'} question={question}  codeOutput={codeOutput} codeAnswer={codeAnswer}  newInputValue={0} questionNo={4}/>
+    <Exercise heading={'TOPIC 4: THE CHARACTER TYPE'} question={question} audio2={audio2}  codeOutput={codeOutput} codeAnswer={codeAnswer}  newInputValue={0} questionNo={4}/>
   );
   
   

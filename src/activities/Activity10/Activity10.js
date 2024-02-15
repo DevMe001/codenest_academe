@@ -1,4 +1,5 @@
 import Exercise from '../../activity-wrapper/exercises.component';
+import audio2 from '../audios/audio-output.mp3';
 
 
 export default function Activity10() {
@@ -32,7 +33,7 @@ export default function Activity10() {
    const question = `Write Java program to Convert a short integer into a string.`;
   
   return (
-    <Exercise heading={'TOPIC 10: Short'} question={question}  codeOutput={codeOutput} codeAnswer={codeAnswer}  newInputValue={124} questionNo={10}/>
+    <Exercise heading={'TOPIC 10: Short'} question={question}  codeOutput={codeOutput} audio2={audio2} codeAnswer={codeAnswer}  newInputValue={124} questionNo={10}/>
   );
   
   

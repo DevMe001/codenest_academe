@@ -1,4 +1,5 @@
 import Exercise from '../../activity-wrapper/exercises.component';
+import audio2 from '../audios/audio-output.mp3';
 
 
 export default function Activity7() {
@@ -31,7 +32,7 @@ export default function Activity7() {
    const question = `Write a Java program to concatenate a given string to the end of another string. `;
   
   return (
-    <Exercise heading={'TOPIC 7: STRING CONCATENATION'} question={question}  codeOutput={codeOutput} codeAnswer={codeAnswer}  newInputValue={0} questionNo={7}/>
+    <Exercise heading={'TOPIC 7: STRING CONCATENATION'} question={question} audio2={audio2}  codeOutput={codeOutput} codeAnswer={codeAnswer}  newInputValue={0} questionNo={7}/>
   );
   
   

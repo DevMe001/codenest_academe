@@ -17,17 +17,19 @@ public class Main{
         double fahrenheit = input.nextDouble();
 
         double celsius = ((5 * (fahrenheit - 32.0)) / 9.0);
-        System.out.println("Input a degree in Fahrenheit:" +  fahrenheit + " degree Fahrenheit is equal to " + celsius + " in Celsius");
+        System.out.println("Input a degree in Fahrenheit:" +  fahrenheit + 
+        " degree Fahrenheit is equal to " + celsius + " in Celsius");
     }
 }
 `;
 
- const codeAnswer = `Input a degree in Fahrenheit: 212 degree Fahrenheit is equal to 100 in Celsius`;
+ const codeAnswer = `Input a degree in Fahrenheit: 212 degree Fahrenheit is equal
+  to 100 in Celsius`;
 
  const question = `Write a Java Program to convert temperature from Fahrenheit to Celsius degrees.`;
 
 return (
-  <Exercise  heading={'TOPIC 2: DATA TYPES'} question={question} audio1={audio1} codeOutput={codeOutput} codeAnswer={codeAnswer} audio2={audio2}  placeholder='Enter fahrenheit value' newInputValue={212} questionNo={2}/>
+  <Exercise  heading={'TOPIC 2: DATA TYPES'} question={question} audio1={audio1} codeOutput={codeOutput} codeAnswer={codeAnswer} audio2={audio2}  newInputValue={212} questionNo={2}/>
 );
 
 

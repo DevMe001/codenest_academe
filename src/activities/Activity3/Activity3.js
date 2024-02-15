@@ -23,8 +23,10 @@ export default function Activity3() {
           // Round the total bill to one decimal place
           total_bill = Math.round(total_bill * 10.0) / 10.0;
 
-          System.out.print("Enter the number of units you have used: " + unit);  
-          System.out.println(" The total amount you have to deposit is: " + total_bill);  
+          System.out.print("Enter the number of units you have used: "
+           + unit);  
+          System.out.println(" The total amount you have to deposit is: " +
+           total_bill);  
       }  
   }
   `;

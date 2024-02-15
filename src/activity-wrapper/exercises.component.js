@@ -37,6 +37,41 @@ const Exercise = ({heading,question,audio1,codeOutput,codeAnswer,audio2,newInput
     }
   }, [newInputValue,questionNo]);
 
+
+
+
+  function speak(t){
+    
+    let synth = window.speechSynthesis;
+    let voices = synth.getVoices();
+    
+
+
+    let u = new SpeechSynthesisUtterance(t);
+
+
+    u.lang = 'en-GB';
+    u.pitch = 1.1; // Range from 0 to 2, default is 1
+    u.rate = 1; // Range from 0.1 to 10, default is 1
+    u.volume = 10; // Range from 0 to 1, default is 1
+
+    u.onend = function () { console.log("on end!"); }
+    u.onerror = function () { console.log("on error!"); }
+    u.onpause = function () { console.log("on pause"); }
+    u.onresume = function () { console.log("on resume"); }
+    u.onstart = function () { console.log("on start"); }
+    synth.cancel();
+    synth.speak(u);
+    setInterval(function () {
+        console.log("paused:" + synth.paused + " pending:" + synth.pending + " speak:" + synth.speaking);
+
+
+
+    }, 2000);
+
+    }
+
+
   return (
     <Box sx={{maxHeight:'80vh'}} className="topic-container">
 
@@ -61,7 +96,11 @@ const Exercise = ({heading,question,audio1,codeOutput,codeAnswer,audio2,newInput
       </Box>
       }
 
-     {!isUndefined(audio1) &&  <SpeechPlayer src={audio1} />}
+     {!isUndefined(audio1) ?  <SpeechPlayer src={audio1} /> : <Button onClick={
+       ()=>{
+        speak(question);
+       }
+      }>Play</Button>}
       
     </Box>
     }

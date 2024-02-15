@@ -1,4 +1,5 @@
 import Exercise from '../../activity-wrapper/exercises.component';
+import audio2 from '../audios/audio-output.mp3';
 
 
 export default function Activity5() {
@@ -27,7 +28,7 @@ export default function Activity5() {
    const question = `Write a Java program to test if a given string contains the specified sequence of char values.`;
   
   return (
-    <Exercise heading={'TOPIC 5: INTRODUCTION TO STRING'} question={question}  codeOutput={codeOutput} codeAnswer={codeAnswer}  newInputValue={0} questionNo={5}/>
+    <Exercise heading={'TOPIC 5: INTRODUCTION TO STRING'} question={question} audio2={audio2}  codeOutput={codeOutput} codeAnswer={codeAnswer}  newInputValue={0} questionNo={5}/>
   );
   
   

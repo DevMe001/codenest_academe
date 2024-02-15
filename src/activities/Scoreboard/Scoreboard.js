@@ -1,7 +1,7 @@
 import { Box, Grid,List,ListItem,ListItemText,Paper, Typography} from "@mui/material";
 import { styled } from '@mui/material/styles';
 import localforage from "localforage";
-import { isEmpty } from "lodash";
+import { isEmpty, isNull } from "lodash";
 import { useEffect, useState } from "react";
 
 
@@ -33,34 +33,36 @@ useEffect(()=>{
 
 
 
+const getLengthCache = !isNull(cacheStoreItem) ? cacheStoreItem.length : 0;
+
   return (
     <Box sx={{mt:3}}>
       <Box sx={{my:3}}>
       </Box>
       <Box>
-      <Grid container spacing={2}>
-        <Grid  md={12}>
+      <Grid container >
+        <Grid item  md={12}>
           <Item sx={{pt:2}}>
           <Typography align="center" component={'h2'} variant="secondary">Scoreboard</Typography>
           </Item>
         </Grid>
-      <Grid md={6}>
+      <Grid item md={6}>
         <Item>
           <Typography  sx={{fontWeight:800}}  >Question</Typography>
          
             
           <List sx={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center' }}>
-            {!isEmpty(cacheStoreItem) && cacheStoreItem.map((value) => (
-            <>
+            {!isEmpty(cacheStoreItem) && cacheStoreItem.map((value,i) => (
+            <div key={i}>
               <ListItem
               sx={{textAlign:'center'}}
-                key={value.questionNum}
+                key={i}
                 disableGutters
               >
                 <ListItemText primary={<Typography sx={{fontWeight:500}} component={'h1'}>Topic {value.questionNum}</Typography>} />
               </ListItem>
             
-            </>
+            </div>
             ))}
               <ListItem
                sx={{textAlign:'center'}}
@@ -73,15 +75,15 @@ useEffect(()=>{
       
         </Item>
       </Grid>
-      <Grid md={6}>
+      <Grid item md={6}>
         <Item>
          <Typography  sx={{fontWeight:800}} >Answer</Typography>
 
          <List sx={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center' }}>
-            {!isEmpty(cacheStoreItem) && cacheStoreItem.map((value) => (
+            {!isEmpty(cacheStoreItem) && cacheStoreItem.map((value,i) => (
               <ListItem
               sx={{textAlign:'center'}}
-                key={value}
+                key={i}
                 disableGutters
               >
                 <ListItemText primary={<Typography sx={{fontWeight:700}} component={'h1'}>{value.answer == true ? 'Correct' : 'Incorrect'}</Typography>} />
@@ -99,7 +101,7 @@ useEffect(()=>{
                 !isEmpty(cacheStoreItem) ? cacheStoreItem.filter(item => item.answer === true).length   : 0
               }</Typography>
               <Typography component={'span'} sx={{fontWeight:700}}>{
-                '/' +  cacheStoreItem.length
+                '/' +  getLengthCache
               }</Typography>
                 </>
               } />

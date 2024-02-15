@@ -1,21 +1,23 @@
   import java.util.Scanner;
-  public class Main
-  {
-    public static void main(String[] args)
-    {
-      Scanner input = new Scanner(System.in);
-      String str;
-      short short_val = 0;
-   
-     
-      short_val = input.nextShort();
 
-      System.out.print("Enter the Short Value : " + short_val);
-   
-      //Convert short integer to string
-      str = Short.toString(short_val);
-      System.out.println("String Value : " + str);
-    }
+  public class Main {  
+
+      private static final double PRICE = 234.90;  
+
+      public static void main(String[] args) {  
+          int unit;  
+          double total_bill;  
+
+          Scanner sc = new Scanner(System.in);  
+          unit = sc.nextInt();  
+          total_bill = PRICE * unit;  
+
+          // Round the total bill to one decimal place
+          total_bill = Math.round(total_bill * 10.0) / 10.0;
+
+          System.out.print("Enter the number of units you have used: "
+           + unit);  
+          System.out.println(" The total amount you have to deposit is: " +
+           total_bill);  
+      }  
   }
-  
-    

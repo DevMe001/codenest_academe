@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 import { useSettingsContext } from '../ai/Settings/SettingsContext';
 import {
   Avatar,
@@ -49,9 +49,15 @@ import Activity9 from '../activities/Activity9/Activity9';
 import Activity10 from '../activities/Activity10/Activity10';
 import Scorebaard from '../activities/Scoreboard/Scoreboard';
 import localforage from 'localforage';
+import {  isUndefined } from 'lodash';
 
 const colorPrimary = '#1e7b75';
 const colorPrimaryShade = '#26918a';
+
+
+const checking = localforage.getItem('exercise').then(item => JSON.parse(item)).length;
+
+
 
 const navigationList = [
   {
@@ -216,7 +222,7 @@ const navigationList = [
     type: 1,
     topic: 11,
     title: 'Score',
-    element: <Scorebaard />,
+    element:!isUndefined(checking) ?  <Scorebaard /> : <Navigate to={'/lessons?progress=22'}   /> ,
     description:
       'Write Java program to Convert a short integer into a string.',
   },
@@ -608,6 +614,11 @@ export default function Lessons() {
                 onClick={() => {
                   IndexedDB.removeItem('attempt')
                   IndexedDB.removeItem('ai')
+
+                  if(progress >= 21){
+                  IndexedDB.removeItem('exercise')
+                    
+                  }
 
                   setTimeout(()=>{
                     history.push({

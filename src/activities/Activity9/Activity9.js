@@ -1,4 +1,5 @@
 import Exercise from '../../activity-wrapper/exercises.component';
+import audio2 from '../audios/audio-output.mp3';
 
 
 export default function Activity9() {
@@ -34,7 +35,7 @@ export default function Activity9() {
    const question = `Write a Java program that reads an integer between 0 and 1000 and adds all the digits in the integer.`;
   
   return (
-    <Exercise heading={'TOPIC 9: Integer'} question={question}  codeOutput={codeOutput} codeAnswer={codeAnswer}  newInputValue={565} questionNo={9}/>
+    <Exercise heading={'TOPIC 9: Integer'} question={question} audio2={audio2}  codeOutput={codeOutput} codeAnswer={codeAnswer}  newInputValue={565} questionNo={9}/>
   );
   
   

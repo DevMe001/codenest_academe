@@ -1,4 +1,5 @@
 import Exercise from '../../activity-wrapper/exercises.component';
+import audio2 from '../audios/audio-output.mp3';
 
 
 export default function Activity8() {
@@ -30,7 +31,7 @@ export default function Activity8() {
    const question = `Write Java program to Convert byte into the string.`;
   
   return (
-    <Exercise heading={'TOPIC 8: Bytes'} question={question}  codeOutput={codeOutput} codeAnswer={codeAnswer}  newInputValue={23} questionNo={8}/>
+    <Exercise heading={'TOPIC 8: Bytes'} question={question}  codeOutput={codeOutput} audio2={audio2} codeAnswer={codeAnswer}  newInputValue={23} questionNo={8}/>
   );
   
   

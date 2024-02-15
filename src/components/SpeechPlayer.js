@@ -33,6 +33,7 @@ export default function SpeechPlayer(props) {
           },
         }}
         src={src}
+        muted
       />
     </Paper>
   );
